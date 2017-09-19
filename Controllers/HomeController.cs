@@ -14,10 +14,10 @@ namespace MvcClient.Controllers
             return View();
         }
 
-		public IActionResult Error()
-		{
-			return View();
-		}
+        public IActionResult Error()
+        {
+            return View();
+        }
 
         public IActionResult Secure()
         {

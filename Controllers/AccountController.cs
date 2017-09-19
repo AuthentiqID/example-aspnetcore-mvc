@@ -7,23 +7,23 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 
 namespace MvcClient.Controllers
 {
-	public class AccountController : Controller
-	{
-		public async Task Login()
-		{
-			await HttpContext.ChallengeAsync("Authentiq", new AuthenticationProperties() { RedirectUri = "/" });
-		}
+    public class AccountController : Controller
+    {
+        public async Task Login()
+        {
+            await HttpContext.ChallengeAsync("Authentiq", new AuthenticationProperties() { RedirectUri = "/" });
+        }
 
-		[Authorize]
-		public async Task Logout()
-		{
-			await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        [Authorize]
+        public async Task Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             await HttpContext.SignOutAsync("Authentiq");
-		}
+        }
 
-		public IActionResult AccessDenied()
-		{
-			return View();
-		}
-	}
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+    }
 }
