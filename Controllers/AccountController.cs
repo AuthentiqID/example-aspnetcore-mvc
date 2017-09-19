@@ -11,7 +11,7 @@ namespace MvcClient.Controllers
     {
         public async Task Login()
         {
-            await HttpContext.ChallengeAsync("Authentiq", new AuthenticationProperties() { RedirectUri = "/" });
+            await HttpContext.ChallengeAsync("Authentiq", new AuthenticationProperties() { RedirectUri = "/Home/Secure" });
         }
 
         [Authorize]
