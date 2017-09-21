@@ -47,8 +47,8 @@ namespace MvcClient
                 options.ClientId = Configuration["Authentiq:ClientId"];
                 options.ClientSecret = Configuration["Authentiq:ClientSecret"];
 
-                // Set response type to code id_token
-                options.ResponseType = "code id_token";
+				// Set response type to: code id_token
+				options.ResponseType = "code id_token";
 
                 // Configure the Claims Issuer to be Authentiq
                 options.ClaimsIssuer = "Authentiq";
@@ -58,19 +58,25 @@ namespace MvcClient
                 options.Scope.Add("openid");
                 options.Scope.Add("aq:push");
 
-                // email will be required and signed
-                options.Scope.Add("email~rs");
+				// email shall be required and verified (signed)
+				options.Scope.Add("email~rs");
                 options.Scope.Add("profile");
 
-                // Set the callback path, so Authentiq will call back to http://localhost:5002/signin-authentiq 
-                // check that you have added the URL, in "Redirect URIs" at the Authentiq dashboard
-                options.CallbackPath = new PathString("/signin-authentiq");
+				// Request additional scopes which can be opted out by the user
+				//options.Scope.Add("phone");
+				//options.Scope.Add("address");
+				//options.Scope.Add("aq:location");
+				//options.Scope.Add("profile");
+
+				// Set the callback path, so that Authentiq will call back to http://localhost:5002/signin-authentiq 
+				// check that you have added this full URL in the Authentiq dashboard at "Redirect URIs"
+				options.CallbackPath = new PathString("/signin-authentiq");
 
                 options.SignedOutCallbackPath = new PathString("/signout-callback-authentiq");
                 options.RemoteSignOutPath = new PathString("/signout-authentiq");
 
-                // The UserInfo endpoint does not really return any extra claims which were not returned in the id_token
-                options.GetClaimsFromUserInfoEndpoint = false;
+				// The UserInfo endpoint does not return any additional claims next to the ones returned in the id_token
+				options.GetClaimsFromUserInfoEndpoint = false;
 
                 options.SaveTokens = true;
             });

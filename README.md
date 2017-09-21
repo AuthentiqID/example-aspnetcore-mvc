@@ -1,11 +1,38 @@
 # Authentiq Sample for ASP.NET Core MVC
 
+This package is an example on how to add [Authentiq](https://www.authentiq.com/developers/?utm_source=github&utm_medium=readme&utm_campaign=example-aspnetcore-mvc) authentication to you MVC App.
+
+
 ## Requirements
 
 * .[NET Core 2.0 SDK](https://www.microsoft.com/net/download/core)
 
 
-## Run this example project
+## To run this project
+
+1. Run the application from the command line:
+
+```bash
+    dotnet run
+```
+
+2. Visit `http://localhost:5002` in your web browser to view this example website.
+
+
+## Register a new client with Authentiq
+
+This example site uses a pre-configured test client at Authentiq in order you can run this example at `http://localhost:5002`, if you want to integrate Authentiq to your own site you will have to register your own client.
+
+1. First go to: [Authentiq Dashboard](https://dashboard.authentiq.com) and sign in.
+2. Create a new "Server side" application.
+3. Fill out any required fields such as the client name and provide your logo URL.
+4. Fill your URL in the "Redirect URIs": `https://YOUR_SITE.COM/signin-authentiq`
+5. Fill your URL in the "Post logout Redirect URIs": `https://YOUR_SITE.COM/signout-callback-authentiq`
+6. Fill your URL for the "Backchannel logout URL": `https://YOUR_SITE.COM/signout-callback-authentiq`
+7. Once you have registered, enter the created application credentials into the [appsettings.json](appsettings.json) file, under the Authentiq section.
+
+
+## Important parts of this example
 
 ### 1. Register the Cookie and OIDC Authentication handlers
 
