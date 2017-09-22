@@ -28,7 +28,7 @@ This example site uses a pre-configured test client at Authentiq in order you ca
 3. Fill out any required fields such as the client name and provide your logo URL.
 4. Fill your URL in the "Redirect URIs": `https://YOUR_SITE.COM/signin-authentiq`
 5. Fill your URL in the "Post logout Redirect URIs": `https://YOUR_SITE.COM/signout-callback-authentiq`
-6. Fill your URL for the "Backchannel logout URL": `https://YOUR_SITE.COM/signout-callback-authentiq`
+6. Fill your URL for the "Backchannel logout URL": `https://YOUR_SITE.COM/signout-authentiq`
 7. Once you have registered, enter the created application credentials into the [appsettings.json](appsettings.json) file, under the Authentiq section.
 
 
@@ -79,6 +79,9 @@ public void ConfigureServices(IServiceCollection services)
     // Set the callback path, so that Authentiq will call back to http://localhost:5002/signin-authentiq 
     // check that you have added this full URL in the Authentiq dashboard at "Redirect URIs"
     options.CallbackPath = new PathString("/signin-authentiq");
+
+    options.SignedOutCallbackPath = new PathString("/signout-callback-authentiq");
+    options.RemoteSignOutPath = new PathString("/signout-authentiq");
     
     // The UserInfo endpoint does not return any additional claims next to the ones returned in the id_token
     options.GetClaimsFromUserInfoEndpoint = false;
