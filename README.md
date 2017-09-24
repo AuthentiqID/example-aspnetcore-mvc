@@ -24,7 +24,7 @@ This package is an example on how to add [Authentiq](https://www.authentiq.com/d
 This example site uses a pre-configured test client at Authentiq in order you can run this example at `http://localhost:5002`, if you want to integrate Authentiq to your own site you will have to register your own application.
 
 1. First go to: [Authentiq Dashboard](https://dashboard.authentiq.com) and sign in.
-2. Create a new "Server side" application.
+2. Create a new "Hybrid" application.
 3. Fill out any required fields such as the client name and provide your logo URL.
 4. Fill your URL in the "Redirect URIs": `https://YOUR_SITE.COM/signin-authentiq`
 5. Click on "Show advanced options" for the next two fields.
